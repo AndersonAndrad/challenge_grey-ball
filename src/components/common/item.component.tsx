@@ -25,7 +25,7 @@ export function ItemComponent(props: ItemProps) {
   return (
     <div className="bg-gray-100 shadow-lg h-fit rounded-xl p-3 flex flex-col gap-2">
       <span className="text-base">{item.title}</span>
-      <img src={item.image} alt="Random Image" />
+      <img src={item.image} alt="Random Image" className="max-h-[250px] w-full h-full object-cover" />
       <div className="flex flex-col gap-3">
         <div className="flex justify-between items-center">
           <span className="flex items-center text-sm gap-2"> <Star className="h-4 w-4" /> {item.rating}/10 </span>
