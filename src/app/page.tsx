@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowDownUp, ArrowUpDown, DollarSign, Footprints, ShoppingCart, Star } from "lucide-react";
+import { addItem, sortItems } from "@/redux/items.state";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Item } from "@/interfaces/Item.interface";
 import { ItemComponent } from "@/components/common/item.component";
-import { addItem } from "@/redux/items.state";
 import axios from "axios";
 import { formatCurrency } from "@/utils/currency.util";
 
@@ -22,6 +22,9 @@ export default function Home() {
   const cartItems: Item[] = useSelector(state => (state as any).cart.cartItems);
 
   const items: Item[] = useSelector(state => (state as any).items.items);
+
+  const sortOrder: number = useSelector(state => (state as any).items.sortOrder);
+  const sortType: 'price' | 'rating' = useSelector(state => (state as any).items.sortBy);
 
   const fetchData = async () => {
     if (!hasMore || loading) return;
@@ -82,9 +85,8 @@ export default function Home() {
   }, [loading]);
 
 
-
-  const iconSort = (sorting: boolean) => {
-    return sorting ? <ArrowUpDown /> : <ArrowDownUp />
+  const iconSort = (sortOrder: number) => {
+    return sortOrder == 2 ? <ArrowUpDown /> : <ArrowDownUp />
   }
 
   const sumAllItems = (): number => {
@@ -127,16 +129,16 @@ export default function Home() {
 
           <div className="h-10 flex items-center gap-3">
             <span className="sm:text-xs md:text-sm lg:text-md xl:text-lg">Sort by:</span>
-            <Button variant='secondary'>
+            <Button variant='secondary' onClick={() => dispatch(sortItems({ type: 'price' }))}>
               <DollarSign />
               Price
-              {iconSort(false)}
+              {sortType === 'price' && iconSort(sortOrder)}
             </Button>
 
-            <Button variant='secondary'>
+            <Button variant='secondary' onClick={() => dispatch(sortItems({ type: 'rating' }))}>
               <Star />
               Raiting
-              {iconSort(true)}
+              {sortType === 'rating' && iconSort(sortOrder)}
             </Button>
           </div>
         </div>
