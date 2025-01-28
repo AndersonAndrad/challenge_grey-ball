@@ -1,0 +1,274 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "title": "Nike Air Max 2021",
+      "description": "The new Nike Air Max with enhanced comfort and modern style.",
+      "price": 150,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1571610031-40f6c2238138",
+      "rating": 4.5
+    },
+    {
+      "id": "2",
+      "title": "Adidas UltraBoost 22",
+      "description": "Adidas UltraBoost 22 with optimized cushioning for all-day wear.",
+      "price": 180,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1607411471351-bda5163f3b52",
+      "rating": 4.7
+    },
+    {
+      "id": "3",
+      "title": "Puma RS-X3 Puzzle",
+      "description": "Puma RS-X3 Puzzle features a bold, energetic design with superior comfort.",
+      "price": 120,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1603174702822-1cb2b4e712f5",
+      "rating": 4.2
+    },
+    {
+      "id": "4",
+      "title": "Reebok Nano X1",
+      "description": "Reebok Nano X1, built for versatility with a responsive feel.",
+      "price": 130,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1595978493031-17897f5cb7a6",
+      "rating": 4.4
+    },
+    {
+      "id": "5",
+      "title": "New Balance 990v5",
+      "description": "Classic New Balance 990v5 with timeless style and premium materials.",
+      "price": 175,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1600099645809-c8d22ff8cb85",
+      "rating": 4.6
+    },
+    {
+      "id": "6",
+      "title": "Nike Air Force 1 Low",
+      "description": "Nike Air Force 1 Low, a classic design for everyday comfort.",
+      "price": 90,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1603241305811-4ffb4f768d1d",
+      "rating": 4.3
+    },
+    {
+      "id": "7",
+      "title": "Adidas Yeezy Boost 350 V2",
+      "description": "Yeezy Boost 350 V2, a sleek, modern look with innovative comfort.",
+      "price": 220,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1593514455917-bb7a97892d47",
+      "rating": 4.8
+    },
+    {
+      "id": "8",
+      "title": "Asics Gel-Kayano 28",
+      "description": "Asics Gel-Kayano 28, built for stability and a smooth ride.",
+      "price": 160,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1620746865031-98601d037d89",
+      "rating": 4.6
+    },
+    {
+      "id": "9",
+      "title": "Nike ZoomX Vaporfly Next%",
+      "description": "Nike ZoomX Vaporfly Next% for serious runners seeking speed.",
+      "price": 250,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1605468702630-4b18ff8de724",
+      "rating": 4.9
+    },
+    {
+      "id": "10",
+      "title": "Under Armour HOVR Phantom 2",
+      "description": "Under Armour HOVR Phantom 2 for maximum energy return and comfort.",
+      "price": 140,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1591181175695-e79b8f455983",
+      "rating": 4.4
+    },
+    {
+      "id": "11",
+      "title": "Converse Chuck Taylor All Star",
+      "description": "The iconic Converse Chuck Taylor for casual style.",
+      "price": 60,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1570730025951-b55d58a59d5b",
+      "rating": 4.2
+    },
+    {
+      "id": "12",
+      "title": "Vans Old Skool",
+      "description": "Vans Old Skool, a timeless classic for any casual wardrobe.",
+      "price": 65,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1592095379634-4a8d35e95dff",
+      "rating": 4.3
+    },
+    {
+      "id": "13",
+      "title": "Reebok Classic Leather",
+      "description": "Reebok Classic Leather, designed for all-day comfort and style.",
+      "price": 85,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1573183836334-b4a3e88f8d80",
+      "rating": 4.1
+    },
+    {
+      "id": "14",
+      "title": "Saucony Endorphin Speed",
+      "description": "Saucony Endorphin Speed, a high-performance shoe for speed and comfort.",
+      "price": 180,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1605232641502-5c73432a23d0",
+      "rating": 4.5
+    },
+    {
+      "id": "15",
+      "title": "Hoka One One Clifton 7",
+      "description": "Hoka One One Clifton 7 for plush comfort and cushion.",
+      "price": 130,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1604672485294-1c4c4958ab1e",
+      "rating": 4.6
+    },
+    {
+      "id": "16",
+      "title": "Fila Disruptor II",
+      "description": "Fila Disruptor II, offering bold style and sturdy support.",
+      "price": 70,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1619467596109-9d0c0f9061f0",
+      "rating": 4.0
+    },
+    {
+      "id": "17",
+      "title": "New Balance Fresh Foam 1080v11",
+      "description": "Fresh Foam 1080v11 from New Balance, built for long-lasting comfort.",
+      "price": 150,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1594894303986-b7f29a393007",
+      "rating": 4.8
+    },
+    {
+      "id": "18",
+      "title": "Nike React Infinity Run Flyknit",
+      "description": "Nike React Infinity Run Flyknit, designed for ultimate cushioning.",
+      "price": 160,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1605542223380-276ad4f7f081",
+      "rating": 4.7
+    },
+    {
+      "id": "19",
+      "title": "Brooks Ghost 14",
+      "description": "Brooks Ghost 14 for smooth transitions and soft cushioning.",
+      "price": 130,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1619072500056-618b201e357e",
+      "rating": 4.6
+    },
+    {
+      "id": "20",
+      "title": "Mizuno Wave Rider 25",
+      "description": "Mizuno Wave Rider 25, engineered for durability and performance.",
+      "price": 140,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1622523563985-bf17fd6a2705",
+      "rating": 4.4
+    },
+    {
+      "id": "21",
+      "title": "Adidas NMD_R1",
+      "description": "Adidas NMD_R1 for a street-ready look with responsive comfort.",
+      "price": 110,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1602493582437-b590fb1a0793",
+      "rating": 4.3
+    },
+    {
+      "id": "22",
+      "title": "Skechers GoRun Razor 3",
+      "description": "Skechers GoRun Razor 3 for high performance and lightweight support.",
+      "price": 120,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1585920374927-f372f9e22c1a",
+      "rating": 4.2
+    },
+    {
+      "id": "23",
+      "title": "On Cloudflow",
+      "description": "On Cloudflow, engineered for responsive speed and comfort.",
+      "price": 170,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1605748766822-10580d4f67ab",
+      "rating": 4.7
+    },
+    {
+      "id": "24",
+      "title": "Vans Slip-On",
+      "description": "Vans Slip-On, iconic, easy to wear and go with any look.",
+      "price": 50,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1614647975084-7e3a83c9b0d0",
+      "rating": 4.0
+    },
+    {
+      "id": "25",
+      "title": "Nike Free RN 5.0",
+      "description": "Nike Free RN 5.0, lightweight and flexible for a natural fit.",
+      "price": 85,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1602651128122-4fa7b81c1687",
+      "rating": 4.5
+    },
+    {
+      "id": "26",
+      "title": "Adidas Samba OG",
+      "description": "Adidas Samba OG for a retro look and unmatched comfort.",
+      "price": 75,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1593615177404-6a93b83dfe8b",
+      "rating": 4.4
+    },
+    {
+      "id": "27",
+      "title": "Puma Cali Sport",
+      "description": "Puma Cali Sport, stylish with a touch of retro flair.",
+      "price": 100,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1599093835525-64e431f63d67",
+      "rating": 4.1
+    },
+    {
+      "id": "28",
+      "title": "Under Armour Curry One",
+      "description": "Under Armour Curry One, designed for quick cuts and explosive moves.",
+      "price": 130,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1603582514557-213b200458cf",
+      "rating": 4.6
+    },
+    {
+      "id": "29",
+      "title": "K-Swiss Hypercourt Express 2",
+      "description": "K-Swiss Hypercourt Express 2, engineered for tennis enthusiasts.",
+      "price": 95,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1598661011968-0171403bc258",
+      "rating": 4.2
+    },
+    {
+      "id": "30",
+      "title": "Nike Blazer Mid '77 Vintage",
+      "description": "Nike Blazer Mid '77 Vintage, a classic basketball-inspired style.",
+      "price": 100,
+      "currency": "USD",
+      "image": "https://images.unsplash.com/photo-1603773579024-11be23d52c0e",
+      "rating": 4.3
+    }
+  ]
+}

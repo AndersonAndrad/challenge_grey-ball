@@ -1,13 +1,76 @@
+'use client';
+
 import { ArrowDownUp, ArrowUpDown, DollarSign, Footprints, ShoppingCart, Star } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Item } from "@/interfaces/Item.interface";
 import { ItemComponent } from "@/components/common/item.component";
-import { items } from "@/mock/items.mock";
+import { addItem } from "@/redux/items.state";
+import axios from "axios";
+import { formatCurrency } from "@/utils/currency.util";
 
 export default function Home() {
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  const cartItems: Item[] = useSelector(state => (state as any).cart.cartItems);
+
+  const items: Item[] = useSelector(state => (state as any).items.items);
+
+  const fetchData = async (page: number) => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`http://localhost:4000/items?page=${page}&limit=10`);
+      const newItems = response?.data ?? [];
+
+      if (newItems.length > 0) {
+        // Dispatch each item to Redux individually
+        newItems.forEach((item: any) => {
+          dispatch(addItem(item)); // Dispatching one by one
+        });
+
+      } else {
+        setHasMore(false); // No more items available
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(page)
+  }, [page]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [loading, hasMore]);
+
+
   const iconSort = (sorting: boolean) => {
     return sorting ? <ArrowUpDown /> : <ArrowDownUp />
+  }
+
+  const sumAllItems = (): number => {
+    return (cartItems ?? []).reduce((acc, curr) => acc + curr.price, 0)
+  }
+
+  const handleScroll = () => {
+    const bottom = window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight;
+    if (bottom && !loading && hasMore) {
+      setPage((prevPage) => prevPage + 1); // Load the next page
+    }
   }
 
   return (
@@ -25,7 +88,7 @@ export default function Home() {
           <Input placeholder="Search by name" className="w-full xl:max-w-[50%]" />
 
           {/* car */}
-          <Button variant='secondary'><ShoppingCart /></Button>
+          <Button variant='secondary'><ShoppingCart />{cartItems?.length ?? 0} | {formatCurrency(sumAllItems())}</Button>
         </div>
       </header>
 
