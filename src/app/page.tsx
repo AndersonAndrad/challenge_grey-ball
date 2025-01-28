@@ -132,13 +132,13 @@ export default function Home() {
             <Button variant='secondary' onClick={() => dispatch(sortItems({ type: 'price' }))}>
               <DollarSign />
               Price
-              {sortType === 'price' && iconSort(sortOrder)}
+              {(sortType === 'price' && sortOrder !== 0) && iconSort(sortOrder)}
             </Button>
 
             <Button variant='secondary' onClick={() => dispatch(sortItems({ type: 'rating' }))}>
               <Star />
               Raiting
-              {sortType === 'rating' && iconSort(sortOrder)}
+              {(sortType === 'rating' && sortOrder !== 0) && iconSort(sortOrder)}
             </Button>
           </div>
         </div>
