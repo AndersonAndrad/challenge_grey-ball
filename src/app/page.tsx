@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowDownUp, ArrowUpDown, DollarSign, Footprints, ShoppingCart, Star } from "lucide-react";
-import { addItem, sortItems } from "@/redux/items.state";
+import { addItem, filterItems, sortItems } from "@/redux/items.state";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -105,7 +105,7 @@ export default function Home() {
         {/* search and car */}
         <div className="flex items-center justify-end w-full ml-auto gap-3">
           {/* search */}
-          <Input placeholder="Search by name" className="w-full xl:max-w-[50%]" />
+          <Input placeholder="Search by name" className="w-full xl:max-w-[50%]" onChange={(event) => dispatch(filterItems(event.target.value))} />
 
           {/* car */}
           <Button variant='secondary'><ShoppingCart />{cartItems?.length ?? 0} | {formatCurrency(sumAllItems())}</Button>
