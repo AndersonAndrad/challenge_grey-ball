@@ -1,5 +1,6 @@
 'use client'
 
+import { Item } from "@/interfaces/Item.interface";
 import { createSlice } from "@reduxjs/toolkit";
 
 const itemSlice = createSlice({
@@ -9,11 +10,10 @@ const itemSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
+      if (state.items.some((item: Item) => item.id === action.payload?.id)) return;
+
       state.items.push(action.payload);
     },
-    removeDuplicates: () => {
-      // state.items = state.
-    }
   }
 })
 

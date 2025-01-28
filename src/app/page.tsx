@@ -23,39 +23,64 @@ export default function Home() {
 
   const items: Item[] = useSelector(state => (state as any).items.items);
 
-  const fetchData = async (page: number) => {
+  const fetchData = async () => {
+    if (!hasMore || loading) return;
+
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:4000/items?page=${page}&limit=10`);
-      const newItems = response?.data ?? [];
+      const response = await axios.get(`http://localhost:4000/items?_page=${page}&_per_page=10`);
+      const newItems: Item[] = response?.data?.data ?? [];
+
+      if (response?.data?.next === null) setHasMore(false);
 
       if (newItems.length > 0) {
-        // Dispatch each item to Redux individually
-        newItems.forEach((item: any) => {
-          dispatch(addItem(item)); // Dispatching one by one
+        newItems.forEach((item) => {
+          dispatch(addItem(item));
         });
 
+        setPage(page + 1);
       } else {
-        setHasMore(false); // No more items available
+        setHasMore(false);
       }
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
+
     }
   };
 
   useEffect(() => {
-    fetchData(page)
-  }, [page]);
+    fetchData()
+  }, [false]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    const element = document.querySelector('.listItems > div.w-full.h-full.overflow-y-auto');
+
+    if (!element) return;
+
+    const timeoutId: NodeJS.Timeout | null = null;
+
+    const listenScroll = () => {
+      if (loading) return;
+
+      const { scrollTop, scrollHeight, clientHeight } = element;
+      const SCROLL_CLOSE_BOTTOM = scrollHeight - scrollTop - clientHeight < 100;
+
+      if (SCROLL_CLOSE_BOTTOM) {
+        setLoading(true);
+        setTimeout(() => fetchData(), 100);
+      }
+    };
+
+    element.addEventListener('scroll', listenScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      element.removeEventListener('scroll', listenScroll);
+      if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [loading, hasMore]);
+  }, [loading]);
+
 
 
   const iconSort = (sorting: boolean) => {
@@ -64,13 +89,6 @@ export default function Home() {
 
   const sumAllItems = (): number => {
     return (cartItems ?? []).reduce((acc, curr) => acc + curr.price, 0)
-  }
-
-  const handleScroll = () => {
-    const bottom = window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight;
-    if (bottom && !loading && hasMore) {
-      setPage((prevPage) => prevPage + 1); // Load the next page
-    }
   }
 
   return (
@@ -93,7 +111,7 @@ export default function Home() {
       </header>
 
       {/* Main Content (Takes Remaining Space) */}
-      <main className="flex flex-col gap-3 col-span-full max-h-full overflow-auto">
+      <main className="listItems flex flex-col gap-3 col-span-full max-h-full overflow-auto">
         {/* Image Presentation */}
         <div className="w-full h-[30%] rounded-xl overflow-hidden">
           <img
@@ -125,7 +143,7 @@ export default function Home() {
 
         {/* items */}
         <div className="w-full h-full flex-grow overflow-y-auto ">
-          <ul className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+          <ul className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 gap-3">
             {items.map((item) => (
               <li key={item.id} >
                 <ItemComponent item={item} />
