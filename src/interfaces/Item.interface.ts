@@ -7,3 +7,13 @@ export interface Item {
   image: string;
   rating: number;
 }
+
+export interface ItemResponse {
+  first: number;
+  items: number;
+  last: number;
+  next: number | null;
+  pages: number;
+  prev: number | null;
+  data: Item[]
+}

@@ -8,6 +8,7 @@ import { addItem } from "@/redux/cart.state";
 import { formatCurrency } from "@/utils/currency.util";
 import { truncate } from "@/utils/str.util";
 import { useDispatch } from "react-redux";
+import { useToast } from "@/hooks/use-toast";
 
 interface ItemProps {
   item: Item;
@@ -16,10 +17,15 @@ interface ItemProps {
 export function ItemComponent(props: ItemProps) {
   const { item } = props;
 
+  const { toast } = useToast()
+
   const dispatch = useDispatch();
 
   const handleAddItemToCart = () => {
     dispatch(addItem(item));
+    toast({
+      title: `Added in the cart: ${item.title}`
+    })
   }
 
   return (

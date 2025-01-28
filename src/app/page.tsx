@@ -1,15 +1,16 @@
 'use client';
 
 import { ArrowDownUp, ArrowUpDown, DollarSign, Footprints, ShoppingCart, Star } from "lucide-react";
+import { Item, ItemResponse } from "@/interfaces/Item.interface";
+import { SortBy, State } from "@/interfaces/state.interface";
 import { addItem, filterItems, sortItems } from "@/redux/items.state";
+import axios, { AxiosResponse } from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Item } from "@/interfaces/Item.interface";
 import { ItemComponent } from "@/components/common/item.component";
-import axios from "axios";
 import { formatCurrency } from "@/utils/currency.util";
 
 export default function Home() {
@@ -19,27 +20,23 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const cartItems: Item[] = useSelector(state => (state as any).cart.cartItems);
-
-  const items: Item[] = useSelector(state => (state as any).items.items);
-
-  const sortOrder: number = useSelector(state => (state as any).items.sortOrder);
-  const sortType: 'price' | 'rating' = useSelector(state => (state as any).items.sortBy);
+  const cartItems: Item[] = useSelector((state: State) => state.cart.cartItems);
+  const items: Item[] = useSelector((state: State) => state.items.items);
+  const sortOrder = useSelector((state: State) => state.items.sortOrder);
+  const sortType = useSelector((state: State) => state.items.sortBy);
 
   const fetchData = async () => {
     if (!hasMore || loading) return;
 
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:4000/items?_page=${page}&_per_page=10`);
+      const response: AxiosResponse<ItemResponse> = await axios.get(`http://localhost:4000/items?_page=${page}&_per_page=10`);
       const newItems: Item[] = response?.data?.data ?? [];
 
       if (response?.data?.next === null) setHasMore(false);
 
       if (newItems.length > 0) {
-        newItems.forEach((item) => {
-          dispatch(addItem(item));
-        });
+        newItems.forEach((item) => dispatch(addItem(item)));
 
         setPage(page + 1);
       } else {
@@ -89,8 +86,16 @@ export default function Home() {
     return sortOrder == 2 ? <ArrowUpDown /> : <ArrowDownUp />
   }
 
+  const showIcon = (type: SortBy) => {
+    return type === sortType && sortOrder !== 0
+  }
+
   const sumAllItems = (): number => {
     return (cartItems ?? []).reduce((acc, curr) => acc + curr.price, 0)
+  }
+
+  const dispatchSort = (type: SortBy): void => {
+    dispatch(sortItems({ type }));
   }
 
   return (
@@ -117,7 +122,7 @@ export default function Home() {
         {/* Image Presentation */}
         <div className="w-full h-[30%] rounded-xl overflow-hidden">
           <img
-            src="https://picsum.photos/200"
+            src="https://imgcentauro-a.akamaihd.net/768x768/98599014A1.jpg"
             alt="Random Image"
             className="w-full h-full object-cover"
           />
@@ -129,16 +134,16 @@ export default function Home() {
 
           <div className="h-10 flex items-center gap-3">
             <span className="sm:text-xs md:text-sm lg:text-md xl:text-lg">Sort by:</span>
-            <Button variant='secondary' onClick={() => dispatch(sortItems({ type: 'price' }))}>
+            <Button variant='secondary' onClick={() => dispatchSort('price')}>
               <DollarSign />
               Price
-              {(sortType === 'price' && sortOrder !== 0) && iconSort(sortOrder)}
+              {showIcon('price') && iconSort(sortOrder)}
             </Button>
 
-            <Button variant='secondary' onClick={() => dispatch(sortItems({ type: 'rating' }))}>
+            <Button variant='secondary' onClick={() => dispatchSort('rating')}>
               <Star />
               Raiting
-              {(sortType === 'rating' && sortOrder !== 0) && iconSort(sortOrder)}
+              {showIcon('rating') && iconSort(sortOrder)}
             </Button>
           </div>
         </div>
