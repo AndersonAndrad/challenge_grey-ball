@@ -12,9 +12,9 @@ export default function Home() {
 
   return (
     <div className="px-[5%] md:px-[10%] lg:px-[10%] xl:px-[10%] h-screen grid grid-cols-12 grid-rows-[auto_1fr_auto]">
-      <header className="grid-cols-12 gap-2 flex items-center justify-between w-full col-span-full h-fit py-4">
+      <header className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row items-center justify-between gap-2  w-full col-span-full h-fit py-4">
         {/* logo */}
-        <div className=" w-[20%] h-10 flex items-center gap-3">
+        <div className="w-full h-10 flex items-center gap-3">
           <Footprints />
           <span className="font-bold text-2xl">ShoeShop</span>
         </div>
@@ -22,7 +22,7 @@ export default function Home() {
         {/* search and car */}
         <div className="flex items-center justify-end w-full ml-auto gap-3">
           {/* search */}
-          <Input placeholder="Search by name" className="max-w-[30%]" />
+          <Input placeholder="Search by name" className="w-full xl:max-w-[50%]" />
 
           {/* car */}
           <Button variant='secondary'><ShoppingCart /></Button>
@@ -41,11 +41,11 @@ export default function Home() {
         </div>
 
         {/* title && sort options */}
-        <div className="flex justify-between items-center gap-3">
-          <span className="text-xl">Your perfect pair, just a step away</span>
+        <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row justify-between items-center gap-3">
+          <span className="sm:text-sm md:text-md lg:text-lg xl:text-xl">Your perfect pair, just a step away</span>
 
           <div className="h-10 flex items-center gap-3">
-            <span>Sort by:</span>
+            <span className="sm:text-xs md:text-sm lg:text-md xl:text-lg">Sort by:</span>
             <Button variant='secondary'>
               <DollarSign />
               Price
@@ -62,7 +62,7 @@ export default function Home() {
 
         {/* items */}
         <div className="w-full h-full flex-grow overflow-y-auto ">
-          <ul className="w-full grid grid-cols-4 gap-3">
+          <ul className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3">
             {items.map((item) => (
               <li key={item.id} >
                 <ItemComponent item={item} />
